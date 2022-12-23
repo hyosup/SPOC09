@@ -1,0 +1,5 @@
+@EndUserText.label: '장기미결 오더 리스트'
+define service Z_SD_C_STOCK_001 {
+  expose Z_C_STOCK_001 as stock;
+  expose Z_VH_REJECTREASON;
+}

@@ -1,0 +1,1 @@
+sap.ui.define(["sap/suite/ui/generic/template/lib/AppComponent"],function(e){"use strict";return e.extend("com.rds.rap.yrdsrap0010.Component",{metadata:{manifest:"json"}})});                                                                                 

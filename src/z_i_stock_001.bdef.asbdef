@@ -1,0 +1,17 @@
+unmanaged implementation in class zbp_i_stock_001 unique;
+//strict;
+
+define behavior for Z_I_STOCK_001 alias stock implementation in class Z_BP_I_STOCK_001
+//late numbering
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  action Reprice   parameter Z_AE_REPRICE_INPUT result [1] Z_AE_REPRICE_INPUT;
+  action RejectAll parameter Z_AE_REJECT_INPUT;
+
+}

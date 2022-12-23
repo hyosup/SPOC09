@@ -1,0 +1,373 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: '오더 리스트',
+  typeNamePlural: '오더 리스트',
+  title: {
+    value: 'SalesOrder'
+  },
+  description: {
+    value: 'SalesOrderDate',
+    type: #STANDARD
+  }
+}
+
+annotate view Z_C_STOCK_001 with
+{
+  @UI.selectionField: [{position: 90 }]
+  @UI.lineItem: [{position: 10, importance: #HIGH }]
+  SalesOrderDate;
+
+  @UI.selectionField: [{position: 10 }]
+  @UI.lineItem: [{position: 20, importance: #HIGH }]
+  @UI.facet: [{
+          label: '{@i18n>@SalesOrderType}',
+          purpose: #HEADER,
+          type: #FIELDGROUP_REFERENCE,
+          targetQualifier: 'SalesOrderType'
+      }
+  ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'SalesOrderType'
+      }
+    ]
+  @UI.multiLineText: true
+  SalesOrderType;
+
+  @UI.identification: [
+      {
+        importance: #HIGH,
+        label: '가격재결정',
+        dataAction: 'Reprice',
+        type: #FOR_ACTION,
+        position: 1
+      },{
+        importance: #HIGH,
+        label: '전체거절',
+        dataAction: 'RejectAll',
+        type: #FOR_ACTION,
+        position: 2
+      }
+  ]
+  @UI.selectionField: [{position: 130 }]
+  @UI.lineItem: [
+    { position: 30,
+      importance: #HIGH,
+      type: #WITH_INTENT_BASED_NAVIGATION ,
+      semanticObject: 'SalesOrder',
+      semanticObjectAction: 'display'
+    }
+  ]
+  SalesOrder;
+
+  @UI.selectionField: [{position: 20 }]
+  @UI.lineItem: [{position: 40, importance: #HIGH }]
+  @UI.facet: [{
+          label: '{@i18n>@SalesOrganization}',
+          purpose: #HEADER,
+          type: #FIELDGROUP_REFERENCE,
+          targetQualifier: 'SalesOrganization'
+      }
+  ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'SalesOrganization'
+      }
+    ]
+  @UI.multiLineText: true
+  SalesOrganization;
+
+  @UI.selectionField: [{position: 30 }]
+  @UI.lineItem: [{position: 50, importance: #HIGH }]
+  @UI.facet: [{
+          label: '{@i18n>@DistributionChannel}',
+          purpose: #HEADER,
+          type: #FIELDGROUP_REFERENCE,
+          targetQualifier: 'DistributionChannel'
+      }
+  ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'DistributionChannel'
+      }
+    ]
+  DistributionChannel;
+
+  @UI.selectionField: [{position: 40 }]
+  @UI.lineItem: [{position: 60, importance: #HIGH }]
+  @UI.facet: [{
+          label: '{@i18n>@OrganizationDivision}',
+          purpose: #HEADER,
+          type: #FIELDGROUP_REFERENCE,
+          targetQualifier: 'OrganizationDivision'
+      }
+  ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'OrganizationDivision'
+      }
+    ]
+  OrganizationDivision;
+
+  @UI.selectionField: [{position: 50 }]
+  @UI.lineItem: [{position: 70, importance: #HIGH }]
+  @UI.facet: [{
+        label: '{@i18n>@SalesOffice}',
+        purpose: #HEADER,
+        type: #FIELDGROUP_REFERENCE,    
+        targetQualifier: 'SalesOffice'
+        }
+    ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'SalesOffice'
+      }
+    ]
+  SalesOffice;
+
+  @UI.facet: [{
+        label: '{@i18n>@SalesGroup}',
+        purpose: #HEADER,
+        type: #FIELDGROUP_REFERENCE,
+        targetQualifier: 'SalesGroup'
+        }
+    ]
+  @UI.fieldGroup: [
+      {
+        qualifier: 'SalesGroup'
+      }
+    ]
+  @UI.selectionField: [{position: 60 }]
+  @UI.lineItem: [{position: 80, importance: #HIGH }]
+  SalesGroup;
+
+  @UI.selectionField: [{position: 100 }]
+  @UI.lineItem: [{position: 90, importance: #HIGH }]
+  @UI.fieldGroup: [
+      {
+        type: #STANDARD,
+        position: 1 ,
+        qualifier: 'Status',
+        groupLabel: 'Status'
+      }
+    ]
+  @UI.facet: [
+    {
+      label: 'Status',
+      position: 10,
+      targetQualifier: 'Status',
+      type: #FIELDGROUP_REFERENCE,
+      purpose: #STANDARD
+    }
+  ]
+  OverallSDDocumentRejectionSts;
+
+  @UI.selectionField: [{position: 110 }]
+  @UI.lineItem: [{position: 100, importance: #HIGH }]
+  @UI.fieldGroup: [
+    {
+      type: #STANDARD,
+      position: 2 ,
+      qualifier: 'Status'
+    }
+  ]
+  StaticCheckSts;
+
+  @UI.selectionField: [{position: 120 }]
+  @UI.lineItem: [{position: 110, importance: #HIGH }]
+  @UI.fieldGroup: [
+    {
+      type: #STANDARD,
+      position: 3 ,
+      qualifier: 'Status'
+    }
+  ]
+  OverallDeliveryStatus;
+
+  @UI.lineItem: [{position: 120, importance: #HIGH }]
+  CreatedByUser;
+
+  @UI.selectionField: [{position: 70 }]
+  @UI.lineItem: [{
+    position: 130,
+    importance: #HIGH,
+    type: #WITH_INTENT_BASED_NAVIGATION,
+    semanticObject: 'SPOC09',
+    semanticObjectAction: 'F0850A'
+  }]
+  @UI.fieldGroup: [
+    {
+      type: #STANDARD,
+      position: 1 ,
+      qualifier: 'Etc.',
+      groupLabel: 'Etc.'
+    }
+  ]
+  @UI.facet: [
+    {
+      label: 'Etc.',
+      position: 20,
+      targetQualifier: 'Etc.',
+      type: #FIELDGROUP_REFERENCE,
+      purpose: #STANDARD
+    }
+  ]
+  SoldToParty;
+  @UI.lineItem: [
+    { position: 150,
+      type: #WITH_INTENT_BASED_NAVIGATION,
+      semanticObject: 'SPOC09',
+      semanticObjectAction: 'F4596' }
+  ]
+  @UI.fieldGroup: [
+      {
+        type: #STANDARD,
+        position: 2 ,
+        qualifier: 'Etc.'
+      }
+    ]
+  CustomerCreditAccount;
+
+
+  @UI.selectionField: [{position: 80 }]
+  @UI.lineItem: [{ position: 170 },
+                 { type: #FOR_ACTION
+                 , dataAction: 'RejectAll'
+                 , label: '전체 거절' }]
+  @UI.fieldGroup: [
+    {
+      type: #STANDARD,
+      position: 3 ,
+      qualifier: 'Etc.'
+    }
+  ]
+  Risk;
+
+
+  @UI.lineItem: [{ position: 180 },
+                 { type: #FOR_ACTION,
+             dataAction: 'Reprice'
+                 ,label: '가격 재결정' }]
+  @UI.fieldGroup: [
+      {
+        type: #STANDARD,
+        position: 1 ,
+        qualifier: 'Price',
+        groupLabel: 'Price'
+      }
+    ]
+  @UI.facet: [
+    {
+      label: 'Price',
+      position: 30,
+      targetQualifier: 'Price',
+      type: #FIELDGROUP_REFERENCE,
+      purpose: #STANDARD
+    }
+  ]
+  TransactionCurrency;
+
+  @UI.lineItem: [{ position: 190 }]
+  @UI.fieldGroup: [
+    {
+      type: #STANDARD,
+      position: 2 ,
+      qualifier: 'Price'
+    }
+  ]
+  PricingDate;
+
+  @UI.lineItem: [{ position: 200 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 3 ,
+    qualifier: 'Price'
+  }
+  ]
+  ValueIncTax;
+
+  @UI.lineItem: [{ position: 210 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 4 ,
+    qualifier: 'Price'
+  }
+  ]
+  CreditCurrency;
+
+  @UI.lineItem: [{ position: 220 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 5 ,
+    qualifier: 'Price'
+  }
+  ]
+  CreditLimit;
+
+  @UI.lineItem: [{ position: 230 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 6 ,
+    qualifier: 'Price'
+  }
+  ]
+  CreditLimitLeft;
+
+  @UI.lineItem: [{ position: 240 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 7 ,
+    qualifier: 'Price'
+  }
+  ]
+  CredLimUsed;
+
+  @UI.lineItem: [{ position: 250 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 8 ,
+    qualifier: 'Price'
+  }
+  ]
+  CreditExposure;
+
+  @UI.lineItem: [{ position: 260 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 9 ,
+    qualifier: 'Price'
+  }
+  ]
+  TotalReceivables;
+
+  @UI.lineItem: [{ position: 270 }]
+  @UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 10 ,
+    qualifier: 'Price'
+  }
+  ]
+  OpenOrders;
+
+  @UI.lineItem: [{ position: 280 }]
+  @UI.fieldGroup: [
+      {
+        type: #STANDARD,
+        position: 11 ,
+        qualifier: 'Price'
+      }
+    ]
+  OpenDelivery;
+
+  @UI.lineItem: [{ position: 280, hidden: true }]
+  CreditControlArea;
+}
